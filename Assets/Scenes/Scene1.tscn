@@ -1,3 +1,158 @@
-[gd_scene format=2]
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/Theme/MinimalUI.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Words/bread.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Words/EPL.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Words/frog.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Art/Apple.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Words/Whatisthis.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/ButtonPress.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Sounds/good.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sounds/bad.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Art/noun-sound-1939979.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Speak.gd" type="Script" id=11]
+[ext_resource path="res://Assets/Art/soundpressed.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sounds/pronunciation_yi_עפּל.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Sounds/pronunciation_yi_bread.wav" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Sounds/pronunciation_yi_זשאַבע.wav" type="AudioStream" id=15]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 1 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="ColorRect" parent="Control"]
+margin_left = -2.60846
+margin_top = -1.3042
+margin_right = 1044.39
+margin_bottom = 620.696
+color = Color( 0.615686, 0.611765, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Apple" type="Sprite" parent="Control/background"]
+position = Vector2( 430.31, 284.761 )
+scale = Vector2( 0.353413, 0.353413 )
+texture = ExtResource( 5 )
+
+[node name="Whatisthis" type="Sprite" parent="Control/background/Apple"]
+position = Vector2( 83.451, -524.548 )
+scale = Vector2( 1.85146, 1.85146 )
+texture = ExtResource( 6 )
+
+[node name="SpeakApple" type="TextureButton" parent="Control"]
+margin_left = 104.273
+margin_top = 510.067
+margin_right = 1563.27
+margin_bottom = 1968.07
+rect_scale = Vector2( 0.07, 0.07 )
+toggle_mode = true
+button_mask = 7
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/SpeakApple"]
+stream = ExtResource( 13 )
+
+[node name="SpeakBread" type="TextureButton" parent="Control"]
+margin_left = 384.273
+margin_top = 510.067
+margin_right = 1843.27
+margin_bottom = 1968.07
+rect_scale = Vector2( 0.07, 0.07 )
+toggle_mode = true
+button_mask = 7
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/SpeakBread"]
+stream = ExtResource( 14 )
+
+[node name="SpeakFrog" type="TextureButton" parent="Control"]
+margin_left = 656.273
+margin_top = 510.067
+margin_right = 2115.27
+margin_bottom = 1968.07
+rect_scale = Vector2( 0.07, 0.07 )
+toggle_mode = true
+button_mask = 7
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/SpeakFrog"]
+stream = ExtResource( 15 )
+
+[node name="BadSound" type="AudioStreamPlayer2D" parent="Control"]
+stream = ExtResource( 9 )
+
+[node name="GoodSound" type="AudioStreamPlayer2D" parent="Control"]
+stream = ExtResource( 8 )
+
+[node name="Button" type="Button" parent="Control"]
+margin_left = 50.2199
+margin_top = 430.927
+margin_right = 509.22
+margin_bottom = 580.927
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EPL" type="Sprite" parent="Control/Button"]
+position = Vector2( 232.533, 71.5491 )
+texture = ExtResource( 3 )
+
+[node name="Button2" type="Button" parent="Control"]
+margin_left = 311.861
+margin_top = 432.704
+margin_right = 770.861
+margin_bottom = 582.704
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EPL" type="Sprite" parent="Control/Button2"]
+position = Vector2( 504.533, 70.2267 )
+texture = ExtResource( 2 )
+
+[node name="Button3" type="Button" parent="Control"]
+anchor_top = -0.0146072
+anchor_bottom = -0.0146072
+margin_left = 574.39
+margin_top = 433.592
+margin_right = 1033.39
+margin_bottom = 583.592
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EPL" type="Sprite" parent="Control/Button3"]
+position = Vector2( 451.064, 71.5491 )
+texture = ExtResource( 4 )
+[connection signal="toggled" from="Control/SpeakApple" to="Control/SpeakApple" method="_on_SpeakApple_toggled"]
+[connection signal="toggled" from="Control/SpeakBread" to="Control/SpeakBread" method="_on_SpeakApple_toggled"]
+[connection signal="toggled" from="Control/SpeakFrog" to="Control/SpeakFrog" method="_on_SpeakApple_toggled"]
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_Button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="Control" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Control/Button3" to="Control" method="_on_Button3_pressed"]
