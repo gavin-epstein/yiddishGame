@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Fonts/HeeboRegular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Theme/MinimalUI.tres" type="Theme" id=5]
+[ext_resource path="res://Scripts/ButtonPress.gd" type="Script" id=8]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 5 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+correct = 2
+
+[node name="background" type="ColorRect" parent="Control"]
+margin_left = -2.94305
+margin_top = -1.3042
+margin_right = 1044.06
+margin_bottom = 620.696
+color = Color( 0.615686, 0.611765, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/background"]
+margin_left = 186.444
+margin_top = 95.0078
+margin_right = 1634.44
+margin_bottom = 631.008
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/normal_font = ExtResource( 1 )
+text = "Please press the following button when you are done to finish and upload your results."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="finishButton" type="Button" parent="Control"]
+anchor_top = -0.0146072
+anchor_bottom = -0.0146072
+margin_left = 382.39
+margin_top = 377.592
+margin_right = 841.39
+margin_bottom = 527.592
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/finishButton"]
+margin_left = 90.0
+margin_right = 458.0
+margin_bottom = 161.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 1 )
+text = "Finish"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/finishButton" to="Control" method="_on_finishButton_pressed"]

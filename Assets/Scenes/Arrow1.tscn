@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Art/Arrow1.png" type="Texture" id=1]
+
+[node name="Arrow1" type="TextureButton"]
+margin_left = 19.4388
+margin_top = 484.264
+margin_right = 319.439
+margin_bottom = 784.264
+rect_scale = Vector2( 0.4, 0.4 )
+button_mask = 7
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 1 )
+texture_disabled = ExtResource( 1 )
+texture_focused = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

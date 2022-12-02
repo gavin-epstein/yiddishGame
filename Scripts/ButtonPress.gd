@@ -1,28 +1,40 @@
 extends Control
-
-
+signal completed
+export var correct = 0
+var controller
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func setup(controller):
+	print("setup" + self.name)
+	self.controller = controller
+	for child in self.get_children():
+		if child.has_method('setup'):
+			child.setup(controller)
 
 
-func _on_Button_pressed() -> void:
-	$GoodSound.play()
+func _on_Any_Button_pressed(button: int) -> void:
+	var resulttext= "wrong"
+	if correct == button:
+		resulttext = "correct"
+	controller.Log("answer" , str(button)+"_" + resulttext)
+	if correct == button:
+		
+		#print("woo")
+		emit_signal('completed')
+		if controller.groupID == 1:
+			$GoodSound.play()
+		elif controller.groupID == 3:
+			$BadSound.play()
+	else:
+		if controller.groupID == 3:
+			$GoodSound.play()
+		elif controller.groupID == 1:
+			$BadSound.play()
+		
 
 
-func _on_Button2_pressed() -> void:
-	$BadSound.play()
-
-
-func _on_Button3_pressed() -> void:
-	pass # Replace with function body.
+func _on_finishButton_pressed() -> void:
+	
+	controller.upload()
